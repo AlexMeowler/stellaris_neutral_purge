@@ -1,0 +1,28 @@
+#Communications Interception
+neutral_purging_tech_communication_interception = {
+	cost = @tier2cost1
+	weight = @tier2weight1
+	tier = 2
+	area = society
+	category = { statecraft }
+	prerequisites = { "tech_decryption_1" }
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.1
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 1.5
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+		}
+	}
+
+	ai_weight = {
+		factor = 1
+	}
+}

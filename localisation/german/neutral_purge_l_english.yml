@@ -1,0 +1,6 @@
+﻿l_english:
+  building_ministry_of_truth: "Ministry of Truth"
+  building_ministry_of_truth_desc: "A complex of communication interceptors, government buildings and computing facilities which allows to monitor all outgoing intergalactic transmissions and to limit the spread of misinformation about our Empire."
+  job_minstry_of_truth_effect_desc: "£neutral_purge_purge£ §YPurging§! species on our Planets will not cause a decrease in other Empires' opinion."
+  neutral_purging_tech_communication_interception: "Communication Interception"
+  neutral_purging_tech_communication_interception_desc: "Means to intercept and crack the encryption of any message within the borders of our Empire."

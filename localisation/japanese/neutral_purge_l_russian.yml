@@ -1,0 +1,6 @@
+﻿l_russian:
+  building_ministry_of_truth: "Министерство правды"
+  building_ministry_of_truth_desc: "Комплекс из правительственных построек, вычислительных серверных и средств для прослушки коммункикаций. Позволяет пересечь любое исходящее сообщение, предотвращая распространение лжи о нашей Империи."
+  job_minstry_of_truth_effect_desc: "£neutral_purge_purge£ §YЛиквидация§! населения на наших планетах не приведет к ухудшению отношений с другими империями."
+  neutral_purging_tech_communication_interception: "Перехват сообщений"
+  neutral_purging_tech_communication_interception_desc: "Методы перехвата и взлома любых шифрованных сообщений на территории нашей Империи."

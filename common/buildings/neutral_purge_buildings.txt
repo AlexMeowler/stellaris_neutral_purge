@@ -1,0 +1,73 @@
+#############
+# Neutral Purge Building Documentation
+#############
+
+building_ministry_of_truth = {
+
+	base_buildtime = @b4_time #900
+
+	position_priority = 100		# used to determine where to place the building in the building list. The lower the value, the closest to the beginning it'll be.
+								# default value is 200, value for capital buildings is 0
+								# if two building types have the same value, they'll be added in a first come first serve order, the newest ones being added at the end of that priority
+								# upgrades of buildings don't use their own priority, but use that of their base building
+
+	category = government
+
+	allow = {
+		planet = {
+			is_capital = yes            #only allow on capitals
+		}
+	}
+
+	abort_trigger = {	
+		planet = {
+			is_capital = no             #only allow on capitals
+		}
+	}
+
+	destroy_trigger = {
+		planet = {
+			is_capital = no             #only allow on capitals
+		}
+	}
+
+	#country_modifier = {
+	#	
+	#}
+	#TODO maybe add jobs like ministers or something
+
+	prerequisites = {
+		neutral_purging_tech_communication_interception
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b4_minerals #2000
+		}
+		upkeep = {
+			energy = @b4_upkeep     #10
+		}
+	}
+
+	planet_modifier = {
+		job_politician_add = 1
+		job_enforcer_add = 2
+	}
+
+	triggered_desc = {
+		text = job_minstry_of_truth_effect_desc
+	}
+
+	#on_built = {
+	#	owner = { set_country_flag = ministry_of_truth_activated }
+	#}
+
+	#on_destroy = {
+	#	owner = { remove_country_flag = ministry_of_truth_activated }
+	#}
+
+	#on_repaired = {
+	#	owner = { set_country_flag = ministry_of_truth_activated }
+	#}
+}

@@ -1,0 +1,10 @@
+on_game_start_country = {
+	events = {
+		neutral_purge.1
+	}
+}
+on_pop_purged = {
+	events = {
+		neutral_purge.2
+	}
+}

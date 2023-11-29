@@ -1,0 +1,7 @@
+spriteTypes = {
+
+	spriteType = {
+		 name = "GFX_text_neutral_purge_purge"
+		 texturefile = "gfx/interface/icons/text_icons/species_purge_icon.dds"
+	 }
+}
