@@ -6,21 +6,31 @@ Dependencies: None
 
 Mod Conflicts: Don't know, but it doesn't alter any of the vanilla files
 
-New Building - Ministry of Truth.
-![Ministry of Truth](/gfx/interface/icons/buildings/building_ministry_of_truth.dds)
+## New Building - Ministry of Truth.
 
-Building can be built on capital planet only.
+<img src="mod_screenshots/building_card.png" alt="Ministry of Truth"/>
+<img src="mod_screenshots/building_desc.png" alt="Ministry of Truth description" width="350"/>
+
+Can be built on capital planet only.
 
 Building prerequisites - research new technology (Communications Interception)
 
-New Technology - Communications Interception
+---
+
+## New Technology - Communications Interception
+
+<img src="mod_screenshots/tech_card.png" alt="Communications Interception"/>
+<img src="mod_screenshots/tech_desc.png" alt="Mommunications Interception description"/>
 
 Tier 2
 
 Area - society
 
-Prerequisites - research Quantum Hacking (T1 physics tech)
+Prerequisites - Quantum Hacking (T1 Physics tech)
+<img src="mod_screenshots/prereq_tech.png" alt="Prerequisite Tech"/>
 
-Xenophobe empires have 2x chance to pull that tech into available options
+Xenophobe empires have 2x chance to pull that technology card
 
-Currently, this is something I made for myself, but decided to share with others.
+---
+
+Currently, this mod is something I made for myself, but decided to share with others.
