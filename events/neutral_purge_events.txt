@@ -1,0 +1,98 @@
+namespace = neutral_purge
+
+event = { #initialize mod event
+	id = neutral_purge.1
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = neutral_purge_installed
+				}
+			}
+			log = "Neutral Purge Mod installed!"
+			set_global_flag = neutral_purge_installed
+		} else = {
+			log = "Neutral Purge Mod loaded!"
+		}
+	}
+}
+
+#sets counters for each country of amount of purged pops which are related to them (cause opinion decrease)
+planet_event = {
+	id = neutral_purge.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		neutral_purge_is_pop_purge_caused_opinion_shift = yes
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				neutral_purge_is_country_opinion_affected_by_genocided_pop = yes
+			}
+			
+			if = {
+				limit = {
+					NOT = {
+						is_variable_set = neutral_purge_purged_pops_count
+					}
+				}
+				
+				log = "Initializing neutral_purge_purged_pops_count for \\[This.GetName]"
+				set_variable = {
+					which = neutral_purge_purged_pops_count
+					value = 0
+				}
+			}
+			
+			change_variable = {
+				which = neutral_purge_purged_pops_count
+				value = 1
+			}
+			log = "Pop purged - increasing \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
+		}
+	}
+}
+
+#this is literally copy of "id = action.21" but reapplies modifier "neutral_purge_purged_pops_count - 1" times to keep value unchanged
+#probably decay will be reset on every pop purge
+planet_event = {
+	id = neutral_purge.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner.capital_scope = {
+			has_active_building = building_ministry_of_truth #has special building
+		}
+		neutral_purge_is_pop_purge_caused_opinion_shift = yes
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				neutral_purge_is_country_opinion_affected_by_genocided_pop = yes
+			}
+			
+			#descrease counter after increase in "neutral_purge.2" event
+			subtract_variable = {
+				which = neutral_purge_purged_pops_count
+				value = 1
+			}
+			log = "Ministry of Truth is working - reverting \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
+			
+			#remove modifier and reapply it N times to keep the value the same (to negate change from vanilla event)
+			remove_opinion_modifier = { who = from modifier = opinion_genocidal }
+			while = {
+				count = neutral_purge_purged_pops_count
+				add_opinion_modifier = { who = from modifier = opinion_genocidal }
+			}
+		}
+	}
+}
+

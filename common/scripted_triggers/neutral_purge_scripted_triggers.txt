@@ -1,0 +1,34 @@
+#Country scope
+
+#copy of trigger of event "id = action.21" to check if purged pop should decrease opinion
+neutral_purge_is_pop_purge_caused_opinion_shift = {
+	exists = fromfrom #crisis.202 can remove the last pop
+	FROMFROM = {
+		is_robot_pop = no
+		is_sapient = yes
+		NOT = { has_trait = "trait_hive_mind" }
+		OR = {
+			NOT = { has_citizenship_type = { country = from type = citizenship_purge } }
+			NOT = { has_purge_type = { country = from type = purge_neutering } }
+		}
+		NOT = { has_purge_type = { country = from type = purge_necrophage } }
+	}
+	is_controlled_by = FROM
+}
+
+#country trigger to filter only those who will get upset about purged pop
+neutral_purge_is_country_opinion_affected_by_genocided_pop = {
+	has_communications = FROM
+	NOT = { is_country = FROM }
+	NOT = { is_same_species = FROMFROM }
+	NOT = { has_ai_personality_behaviour = purger }
+	OR = {
+		is_country_type = default
+		has_ai_personality = awakened_fallen_empire_xenophile
+	}
+	has_intel_level = {
+		who = FROM
+		category = economy
+		level >= 1
+	}
+}
