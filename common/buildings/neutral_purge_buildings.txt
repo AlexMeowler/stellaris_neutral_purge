@@ -31,11 +31,6 @@ building_ministry_of_truth = {
 		}
 	}
 
-	#country_modifier = {
-	#	
-	#}
-	#TODO maybe add jobs like ministers or something
-
 	prerequisites = {
 		neutral_purging_tech_communication_interception
 	}

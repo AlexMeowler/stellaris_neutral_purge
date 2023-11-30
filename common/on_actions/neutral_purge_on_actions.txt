@@ -1,10 +1,20 @@
-on_game_start_country = {
+on_game_start = {
 	events = {
 		neutral_purge.1
 	}
 }
+
+on_single_player_save_game_load = {
+	events = {
+		neutral_purge.1
+	}
+}
+
+# DO NOT ALTER THE EVENTS ORDER
+# 2 must come before 3 to update counters!
 on_pop_purged = {
 	events = {
 		neutral_purge.2
+		neutral_purge.3
 	}
 }
