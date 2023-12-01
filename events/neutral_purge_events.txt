@@ -3,7 +3,6 @@ namespace = neutral_purge
 event = { #initialize mod event
 	id = neutral_purge.1
 	hide_window = yes
-	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		if = {
@@ -14,9 +13,9 @@ event = { #initialize mod event
 			}
 			log = "Neutral Purge Mod installed!"
 			set_global_flag = neutral_purge_installed
-		} else = {
-			log = "Neutral Purge Mod loaded!"
 		}
+		
+		log = "Neutral Purge Mod loaded!"
 	}
 }
 
