@@ -20,6 +20,9 @@ event = { #initialize mod event
 }
 
 #sets counters for each country of amount of purged pops which are related to them (cause opinion decrease)
+#also sets counter for affected species
+#first counter used to negate "genocidal" opinion
+#second is for "genocided our species"
 planet_event = {
 	id = neutral_purge.2
 	hide_window = yes
@@ -30,6 +33,30 @@ planet_event = {
 	}
 	
 	immediate = {
+		#set counter for species of purged pop
+		FROMFROM.SPECIES = {
+			if = {
+				limit = {
+					NOT = {
+						is_variable_set = neutral_purge_purged_species_count
+					}
+				}
+				
+				log = "Initializing neutral_purge_purged_species_count for species \\[This.GetName]"
+				set_variable = {
+					which = neutral_purge_purged_species_count
+					value = 0
+				}
+			}
+			
+			change_variable = {
+				which = neutral_purge_purged_species_count
+				value = 1
+			}
+			log = "Species purged - increasing \\[This.GetName].neutral_purge_purged_species_count to \\[This.neutral_purge_purged_species_count]"
+		}
+		
+		#set counter for all affected countries
 		every_country = {
 			limit = {
 				neutral_purge_is_country_opinion_affected_by_genocided_pop = yes
@@ -42,7 +69,7 @@ planet_event = {
 					}
 				}
 				
-				#log = "Initializing neutral_purge_purged_pops_count for \\[This.GetName]"
+				log = "Initializing neutral_purge_purged_pops_count for \\[This.GetName]"
 				set_variable = {
 					which = neutral_purge_purged_pops_count
 					value = 0
@@ -53,7 +80,7 @@ planet_event = {
 				which = neutral_purge_purged_pops_count
 				value = 1
 			}
-			#log = "Pop purged - increasing \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
+			log = "Pop purged - increasing \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
 		}
 	}
 }
@@ -78,12 +105,12 @@ planet_event = {
 				neutral_purge_is_country_opinion_affected_by_genocided_pop = yes
 			}
 			
-			#descrease counter after increase in "neutral_purge.2" event
+			#descrease empire counter after increase in "neutral_purge.2" event
 			subtract_variable = {
 				which = neutral_purge_purged_pops_count
 				value = 1
 			}
-			#log = "Ministry of Truth is working - reverting \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
+			log = "Ministry of Truth is working - reverting \\[This.GetName].neutral_purge_purged_pops_count to \\[This.neutral_purge_purged_pops_count]"
 			
 			#remove modifier and reapply it N times to keep the value the same (to negate change from vanilla event)
 			remove_opinion_modifier = { who = from modifier = opinion_genocidal }
@@ -92,6 +119,27 @@ planet_event = {
 				add_opinion_modifier = { who = from modifier = opinion_genocidal }
 			}
 		}
+		
+		every_country = {
+			limit = {
+				neutral_purge_is_country_the_same_species_as_purged_pop = yes
+			}
+			
+			#descrease species counter after increase in "neutral_purge.2" event
+			SPECIES = {
+				subtract_variable = {
+					which = neutral_purge_purged_species_count
+					value = 1
+				}
+				log = "Ministry of Truth is working - reverting \\[This.GetName].neutral_purge_purged_species_count to \\[This.neutral_purge_purged_species_count]"
+			}
+			
+			#remove modifier and reapply it N times to keep the value the same (to negate change from vanilla event)
+			remove_opinion_modifier = { who = from modifier = opinion_genocidal_our_species }
+			while = {
+				count = species.neutral_purge_purged_species_count
+				add_opinion_modifier = { who = from modifier = opinion_genocidal_our_species }
+			}
+		}
 	}
 }
-

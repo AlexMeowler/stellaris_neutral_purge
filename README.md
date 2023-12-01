@@ -2,6 +2,11 @@
 Mod for Stellaris providing new technology and building to prevent opinion decrease from purging pops.
 Adds new building and technology to prevent decrease in relationship when purging species.
 
+---
+### Disabled mod for muiltiplayer (effect will not be triggered)
+### Building currently only works for player empire. This is not a bug but limitations from restricted API I have for modding opinions.
+
+---
 Dependencies: None
 
 Mod Conflicts: Don't know, but it doesn't alter any of the vanilla files
