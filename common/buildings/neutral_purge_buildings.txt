@@ -12,6 +12,10 @@ building_ministry_of_truth = {
 								# upgrades of buildings don't use their own priority, but use that of their base building
 
 	category = government
+	
+	empire_limit = {                   #allow only 1 building
+		base = 1
+	}
 
 	allow = {
 		planet = {
