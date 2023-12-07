@@ -58,6 +58,10 @@ building_ministry_of_truth = {
 		text = job_minstry_of_truth_effect_desc
 	}
 
+	ai_weight = {
+		factor = 0
+	}
+
 	#on_built = {
 	#	owner = { set_country_flag = ministry_of_truth_activated }
 	#}
